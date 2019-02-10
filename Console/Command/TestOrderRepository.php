@@ -54,11 +54,10 @@ class TestOrderRepository extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $orderId = (int) $input->getArgument("entity_id");
 
         // Emulate adminhtml area code
-        $this->appState->emulateAreaCode(Area::AREA_ADMINHTML, function() use ($output, $orderId) {
+        $this->appState->emulateAreaCode(Area::AREA_ADMINHTML, function () use ($output, $orderId) {
             $orderRepository = $this->orderRepositoryFactory->create();
             try {
                 $order = $orderRepository->get($orderId);
